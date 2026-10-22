@@ -1,0 +1,6 @@
+# ResearchForge runtime dependencies.
+# Deliberately minimal: the backend only needs an ASGI web framework.
+# Everything else (HTTP client, database, hashing, DOCX/LaTeX export, tests)
+# uses the Python standard library so the app stays easy to deploy locally.
+fastapi>=0.110
+uvicorn>=0.27

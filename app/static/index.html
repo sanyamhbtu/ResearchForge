@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ResearchForge — verified research &amp; dataset intelligence</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231a1a1f'/%3E%3Cpath d='M18 4 8 18h6l-2 10 12-15h-7z' fill='%23ffd84d' stroke='%231a1a1f' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Nunito:wght@400;600;700;800;900&family=Shantell+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+<!-- ==========================================================================
+     VIEW 1 — LANDING PAGE
+     ========================================================================== -->
+<div id="view-landing" class="view active">
+
+  <div class="land-top">
+    <span class="land-logo">
+      <svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#1a1a1f"/><path d="M18 4 8 18h6l-2 10 12-15h-7z" fill="#ffd84d" stroke="#1a1a1f" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      ResearchForge
+    </span>
+    <span class="land-top-links">
+      <a href="#land-features">What it does</a>
+      <a href="#land-pipeline">How it works</a>
+      <a href="#land-honesty">Honesty rule</a>
+      <a href="#land-sources">Sources</a>
+    </span>
+    <button class="btn" id="btn-enter-top" type="button">Enter workspace</button>
+  </div>
+
+  <section class="land-hero">
+    <div class="land-hero-copy">
+      <span class="land-eyebrow">verified global research &amp; dataset intelligence</span>
+      <h1>Find real research.<br><em>Prove</em> it.<br>Never fake it.</h1>
+      <p class="land-lede">
+        Ask a research question in plain English. ResearchForge searches nine official public
+        research APIs, folds every result into one schema, checks that the identifiers and links
+        are real, and quotes the evidence it found — with a locator for every quote.
+      </p>
+      <p class="land-lede land-lede-strong">
+        When the evidence isn't there, it says so out loud instead of inventing an answer.
+      </p>
+      <div class="land-cta">
+        <button class="btn btn-xl" id="btn-enter" type="button">Enter workspace →</button>
+        <a class="btn btn-xl ghost" href="#land-pipeline">See what happens behind the scenes</a>
+      </div>
+      <p class="land-micro">Runs entirely on your machine. No API key required. Nothing invented.</p>
+    </div>
+    <div class="land-hero-art">
+      <img
+        src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=hand%20drawn%20doodle%20illustration%20of%20a%20researcher%20at%20a%20desk%20holding%20a%20giant%20magnifying%20glass%20over%20tall%20stacks%20of%20papers%20and%20glowing%20data%20charts%2C%20thick%20black%20ink%20outlines%2C%20crayon%20texture%2C%20bright%20yellow%20lime%20pink%20purple%20palette%2C%20cream%20paper%20background%2C%20playful%20sticker%20style%2C%20flat%20vector%2C%20no%20text&image_size=landscape_4_3"
+        alt="Hand-drawn illustration of a researcher inspecting papers and data with a magnifying glass"
+        class="art art-hero" width="960" height="720" onerror="this.classList.add('broken')">
+      <span class="land-sticker">no invented sources</span>
+    </div>
+  </section>
+
+  <section class="land-strip">
+    <span class="land-strip-label" id="land-live">Searched live, through their own public APIs</span>
+    <div class="chips">
+      <span class="chip">OpenAlex</span>
+      <span class="chip">Crossref</span>
+      <span class="chip">Semantic Scholar</span>
+      <span class="chip">Europe PMC</span>
+      <span class="chip">Zenodo</span>
+      <span class="chip">DataCite</span>
+      <span class="chip">Hugging Face</span>
+      <span class="chip">UCI ML Repository</span>
+      <span class="chip">Data.gov</span>
+    </div>
+  </section>
+
+  <section class="land-section" id="land-features">
+    <h2 class="land-h2">What you actually get</h2>
+    <p class="land-sub">Four things, done properly. No dashboards full of numbers nobody can trace.</p>
+    <div class="land-cards">
+      <article class="land-card">
+        <img class="art" src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=hand%20drawn%20doodle%20illustration%20of%20a%20globe%20connected%20by%20dotted%20lines%20to%20floating%20document%20cards%20and%20a%20database%20cylinder%2C%20thick%20black%20ink%20outlines%2C%20crayon%20texture%2C%20bright%20sky%20blue%20yellow%20lime%20palette%2C%20cream%20paper%20background%2C%20playful%20sticker%20style%2C%20flat%20vector%2C%20no%20text&image_size=landscape_4_3" alt="Illustration of a globe linked to documents and a database" loading="lazy" onerror="this.classList.add('broken')">
+        <h3>Discovery across 9 real sources</h3>
+        <p>Papers and datasets from OpenAlex, Crossref, Semantic Scholar, Europe PMC, Zenodo, DataCite, Hugging Face, UCI and Data.gov — each queried with several rewritten query variants, every page logged in a search ledger.</p>
+      </article>
+      <article class="land-card">
+        <img class="art" src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=hand%20drawn%20doodle%20illustration%20of%20a%20big%20rubber%20stamp%20pressing%20a%20checkmark%20onto%20a%20document%20next%20to%20a%20shield%20and%20magnifying%20glass%2C%20thick%20black%20ink%20outlines%2C%20crayon%20texture%2C%20green%20yellow%20palette%2C%20cream%20paper%20background%2C%20playful%20sticker%20style%2C%20flat%20vector%2C%20no%20text&image_size=landscape_4_3" alt="Illustration of a verification stamp on a document" loading="lazy" onerror="this.classList.add('broken')">
+        <h3>Verification, not vibes</h3>
+        <p>Every record gets its DOI resolved against Crossref or DataCite, its links probed, its licence and access terms read. Checks are stored with their method and timestamp, so you can see exactly what was confirmed and what was not.</p>
+      </article>
+      <article class="land-card">
+        <img class="art" src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=hand%20drawn%20doodle%20illustration%20of%20an%20open%20book%20with%20quotation%20marks%20floating%20out%20and%20a%20pin%20marking%20a%20line%2C%20thick%20black%20ink%20outlines%2C%20crayon%20texture%2C%20purple%20yellow%20pink%20palette%2C%20cream%20paper%20background%2C%20playful%20sticker%20style%2C%20flat%20vector%2C%20no%20text&image_size=landscape_4_3" alt="Illustration of quoted passages pinned inside a book" loading="lazy" onerror="this.classList.add('broken')">
+        <h3>Evidence with a locator</h3>
+        <p>Findings are extracted verbatim from text that was actually retrieved — never paraphrased into a claim. Every passage carries its locator, its origin and a link back to the source it came from.</p>
+      </article>
+      <article class="land-card">
+        <img class="art" src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=hand%20drawn%20doodle%20illustration%20of%20an%20empty%20open%20box%20with%20a%20large%20question%20mark%20and%20a%20friendly%20crossed%20out%20robot%2C%20thick%20black%20ink%20outlines%2C%20crayon%20texture%2C%20coral%20red%20yellow%20palette%2C%20cream%20paper%20background%2C%20playful%20sticker%20style%2C%20flat%20vector%2C%20no%20text&image_size=landscape_4_3" alt="Illustration of an empty box with a question mark" loading="lazy" onerror="this.classList.add('broken')">
+        <h3>An honest empty result</h3>
+        <p>If the configured scope was explored and nothing suitable and verifiable turned up, you get one sentence. No filler, no plausible-sounding invention, and a failed source is never counted as proof that data doesn't exist.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="land-section land-pipeline-section" id="land-pipeline">
+    <h2 class="land-h2">What happens in the background</h2>
+    <p class="land-sub">The full path from your question to a verified answer. Every stage writes to an audit trail you can read in the app.</p>
+    <ol class="pipe">
+      <li class="pipe-step">
+        <span class="pipe-num">1</span>
+        <h4>Your question is parsed</h4>
+        <p>Plain language becomes a structured specification: topic, objective, domain, intent (datasets / literature / both), keywords, data types, modalities, geography, time range and access requirements. Assumptions it had to make are listed, not hidden.</p>
+        <span class="pipe-mod">parser.py</span>
+      </li>
+      <li class="pipe-step">
+        <span class="pipe-num">2</span>
+        <h4>A query plan is built</h4>
+        <p>The question is rewritten into several query variants per source, each tagged with where it came from. Adapters that don't fit the intent are excluded — with a stated reason.</p>
+        <span class="pipe-mod">planning.py</span>
+      </li>
+      <li class="pipe-step">
+        <span class="pipe-num">3</span>
+        <h4>Official public APIs are contacted</h4>
+        <p>Each adapter handles its own pagination, retries, back-off and rate limits. Every page requested, every empty page and every failure is written to the search ledger — a failed source is recorded as a failure, never as "nothing exists".</p>
+        <span class="pipe-mod">sources/*.py · http_client.py</span>
+      </li>
+      <li class="pipe-step">
+        <span class="pipe-num">4</span>
+        <h4>Everything is normalised</h4>
+        <p>Nine different response shapes collapse into one <code>NormalizedRecord</code>: identifier, DOI, title, abstract, authors, year, venue, publisher, licence, access, citation count, concepts, dataset fields and the raw payload.</p>
+        <span class="pipe-mod">sources/base.py</span>
+      </li>
+      <li class="pipe-step">
+        <span class="pipe-num">5</span>
+        <h4>Duplicates are merged deterministically</h4>
+        <p>Same DOI → same record. Otherwise title + year, then a token-overlap check at 0.87. Merges are recorded as <code>duplicate_of</code> so the merge is reversible and countable, not a silent delete.</p>
+        <span class="pipe-mod">services/dedupe.py</span>
+      </li>
+      <li class="pipe-step">
+        <span class="pipe-num">6</span>
+        <h4>Identity and links are verified</h4>
+        <p>DOIs are resolved through the registrars, links are probed, and licence / access terms are compared. The outcome is stored per check — verified, partially verified, conflict, inconclusive, inaccessible or failed.</p>
+        <span class="pipe-mod">services/verification.py</span>
+      </li>
+      <li class="pipe-step">
+        <span class="pipe-num">7</span>
+        <h4>Sufficiency is judged</h4>
+        <p>The pipeline decides whether the scope it actually reached is enough to answer: sufficient, unverified candidates, insufficient evidence, or search incomplete. Only the last two are ever allowed to end in the "no dataset" reply.</p>
+        <span class="pipe-mod">services/evidence.py</span>
+      </li>
+      <li class="pipe-step">
+        <span class="pipe-num">8</span>
+        <h4>Evidence is extracted, verbatim</h4>
+        <p>Passages are lifted from retrieved text with a locator and an origin marker. Metadata copied from a single source is labelled as provenance — explicitly not independent confirmation.</p>
+        <span class="pipe-mod">services/evidence.py</span>
+      </li>
+      <li class="pipe-step">
+        <span class="pipe-num">9</span>
+        <h4>Everything is stored and reproducible</h4>
+        <p>Projects, runs, the ledger, records, verifications, downloads with SHA-256, gap candidates and manuscripts all land in local SQLite. Reopen any project later and the reasoning is still there.</p>
+        <span class="pipe-mod">db.py · services/store.py</span>
+      </li>
+      <li class="pipe-step">
+        <span class="pipe-num">10</span>
+        <h4>You get the answer, or the truth</h4>
+        <p>Results appear with their verification status and evidence attached. If nothing survives, you get the honest line below — never a fabricated substitute.</p>
+        <span class="pipe-mod">api/routes.py</span>
+      </li>
+    </ol>
+  </section>
+
+  <section class="land-section" id="land-honesty">
+    <div class="land-honesty">
+      <h2 class="land-h2">The one rule that shapes everything</h2>
+      <p class="land-sub">
+        ResearchForge never fabricates data, sources, citations, dataset counts, findings,
+        experiments or conclusions. When sufficient evidence cannot be found or verified, the
+        platform says exactly this, verbatim:
+      </p>
+      <p class="land-quote" id="land-message">There is insufficient data worldwide. No dataset.</p>
+      <ul class="land-wont">
+        <li>It does not invent datasets, papers, citations, counts, results, significance or novelty.</li>
+        <li>It does not treat metadata copied from one source as independent confirmation.</li>
+        <li>It does not bypass logins, paywalls or licence restrictions.</li>
+        <li>It does not claim internet-wide coverage — results are scoped to the adapters that actually answered.</li>
+        <li>It does not write a results or conclusion section before experiments exist.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="land-section" id="land-sources">
+    <h2 class="land-h2">Sources, and how they're credited</h2>
+    <p class="land-sub">Only official public endpoints are used. The live state of each adapter — availability, families of data it covers, and whether a key is configured — is shown inside the app, never guessed here.</p>
+    <div class="land-cta">
+      <button class="btn btn-xl" id="btn-enter-bottom" type="button">Enter workspace →</button>
+    </div>
+  </section>
+
+  <footer class="land-foot">
+    <span>ResearchForge · runs locally · Python + SQLite + FastAPI</span>
+    <span class="muted">Illustrations are decorative. Every figure inside the app comes from a retrieved record.</span>
+  </footer>
+</div>
+
+<!-- ==========================================================================
+     VIEW 2 — WORKSPACE (gate → dashboard → tools)
+     ========================================================================== -->
+<div id="view-app" class="view">
+
+  <div id="gate" class="gate">
+    <div class="gate-card">
+      <span class="gate-badge">
+        <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#1a1a1f"/><path d="M18 4 8 18h6l-2 10 12-15h-7z" fill="#ffd84d" stroke="#1a1a1f" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        ResearchForge
+      </span>
+      <h2 class="gate-title">Who's working today?</h2>
+      <p class="gate-sub">This is a local workspace, so there's no account to create and no password to remember. Your name is stored in this browser only and is never sent to any source.</p>
+      <form id="gate-form">
+        <label for="gate-name">Your name</label>
+        <input type="text" id="gate-name" maxlength="60" placeholder="e.g. Ada L." autocomplete="off" required>
+        <label for="gate-role">Role (optional)</label>
+        <input type="text" id="gate-role" maxlength="60" placeholder="e.g. PhD researcher, data analyst" autocomplete="off">
+        <div class="row tight" style="margin-top:14px">
+          <button class="btn btn-xl" type="submit">Open my dashboard →</button>
+          <button class="btn ghost" id="btn-gate-back" type="button">Back to home</button>
+        </div>
+      </form>
+      <p class="tiny muted" style="margin-top:12px">Stored under <code>localStorage["rf.profile"]</code>. Clear it any time from the profile menu.</p>
+    </div>
+  </div>
+
+  <header id="app-header">
+    <h1>ResearchForge</h1>
+    <span class="tagline">verified research &amp; dataset intelligence — no fabricated findings</span>
+    <span class="spacer"></span>
+    <span id="health-chip" class="badge grey">connecting…</span>
+    <span id="project-chip" class="badge grey">no project</span>
+    <button class="btn small ghost" id="btn-home" type="button" title="Back to the landing page">Home</button>
+    <button class="btn small" id="profile-chip" type="button">Profile</button>
+  </header>
+
+  <div class="layout">
+    <aside>
+      <nav id="nav">
+        <span class="nav-title">Start here</span>
+        <button data-panel="dashboard" class="active">Dashboard</button>
+        <button data-panel="workspace">New research run</button>
+
+        <span class="nav-title">Your results</span>
+        <button data-panel="datasets">Datasets</button>
+        <button data-panel="literature">Literature</button>
+        <button data-panel="matrix">Evidence matrix</button>
+        <button data-panel="gaps">Gap explorer</button>
+        <button data-panel="manuscript">Manuscript</button>
+        <button data-panel="downloads">Downloads</button>
+
+        <span class="nav-title">Trace the run</span>
+        <button data-panel="run">Run &amp; timeline</button>
+        <button data-panel="sources">Sources &amp; queries</button>
+        <button data-panel="projects">Project history</button>
+
+        <span class="nav-title">System</span>
+        <button data-panel="howto">How it works</button>
+        <button data-panel="policy">Policy &amp; evidence rules</button>
+        <button data-panel="ops">Adapters &amp; logs</button>
+      </nav>
+    </aside>
+
+    <main>
+      <div id="banner" class="banner"></div>
+
+      <!-- ---------------------------------------------------------------- -->
+      <section id="panel-dashboard" class="panel active">
+        <div class="dash-head">
+          <h2 class="dash-hi">Hey <span id="dash-name">there</span> 👋</h2>
+          <p class="sub" id="dash-sub">Here's where you are right now.</p>
+        </div>
+
+        <div class="tiles" id="dash-tiles"></div>
+
+        <div class="dash-grid">
+          <div class="card dash-primary">
+            <h3 style="margin-top:0">Start a research run</h3>
+            <p class="small muted" style="margin-top:0">Type a question in plain English. ResearchForge turns it into a plan, searches the official APIs, verifies what it finds and tells you honestly when the evidence isn't there.</p>
+            <div class="dash-examples" id="dash-examples"></div>
+            <div class="row tight" style="margin-top:12px">
+              <button class="btn btn-xl" id="dash-start" type="button">Write my question →</button>
+              <button class="btn ghost" id="dash-view-project" type="button">Open current project</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 style="margin-top:0">What happens in the background</h3>
+            <p class="small muted" style="margin-top:0">Ten stages, all audited. Tap any step to read the detail.</p>
+            <ol class="mini-pipe" id="dash-pipeline"></ol>
+            <button class="btn small ghost" id="dash-howto" type="button">Read the full walkthrough</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-top:0">Jump into your results</h3>
+          <p class="small muted" style="margin-top:0" id="dash-project-line">No project loaded yet.</p>
+          <div class="quick" id="dash-quick"></div>
+        </div>
+
+        <div class="dash-grid">
+          <div class="card">
+            <h3 style="margin-top:0">Recent projects</h3>
+            <div id="dash-projects"></div>
+          </div>
+          <div class="card">
+            <h3 style="margin-top:0">Fresh records — tap for the full profile</h3>
+            <div id="dash-records"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------------------------------------------------------------- -->
+      <section id="panel-howto" class="panel">
+        <h2>How it works, stage by stage</h2>
+        <p class="sub">This is the real pipeline implemented in this codebase, with the module that performs each step. Nothing here is aspirational.</p>
+        <div id="howto-body"></div>
+      </section>
+
+      <!-- ---------------------------------------------------------------- -->
+      <section id="panel-record" class="panel">
+        <div class="row tight record-topbar">
+          <button class="btn small ghost" id="record-back" type="button">← Back</button>
+          <span class="spacer"></span>
+          <span class="tiny muted" id="record-origin"></span>
+        </div>
+        <div id="record-body"><p class="muted small">Pick a record from Datasets, Literature or your dashboard.</p></div>
+      </section>
+
+      <!-- ---------------------------------------------------------------- -->
+      <section id="panel-workspace" class="panel">
+        <h2>New research run</h2>
+        <p class="sub">Describe the research question in natural language or dictate it. Nothing is invented: the platform reports only what it retrieves and verifies.</p>
+
+        <div class="card">
+          <label for="question">Research question</label>
+          <textarea id="question" placeholder="e.g. Find publicly available datasets for detecting fraudulent financial transactions"></textarea>
+          <div class="row tight" style="margin-top:8px">
+            <button class="btn ghost small" id="btn-voice" type="button">🎙 Start dictation</button>
+            <button class="btn ghost small" id="btn-preview" type="button">Preview interpretation &amp; plan</button>
+            <button class="btn" id="btn-run" type="button">Run research</button>
+          </div>
+          <p class="tiny muted" id="voice-status"></p>
+        </div>
+
+        <details class="card" id="advanced-options">
+          <summary>Search options (defaults are fine for a first run)</summary>
+          <h3 style="margin-top:12px">Scope</h3>
+          <div class="row">
+            <div>
+              <label for="opt-intent">Intent</label>
+              <select id="opt-intent">
+                <option value="">auto-detect</option>
+                <option value="datasets">datasets only</option>
+                <option value="literature">literature only</option>
+                <option value="both">both</option>
+              </select>
+            </div>
+            <div>
+              <label for="opt-depth">Depth (pages per query, 0 = default)</label>
+              <input type="number" id="opt-depth" min="0" max="6" value="0">
+            </div>
+            <div>
+              <label for="opt-page">Page size (0 = default)</label>
+              <input type="number" id="opt-page" min="0" max="200" value="0">
+            </div>
+            <div>
+              <label for="opt-verify">Records to verify</label>
+              <input type="number" id="opt-verify" min="0" max="200" value="20">
+            </div>
+          </div>
+          <div class="row tight" style="margin-top:10px">
+            <label class="tiny"><input type="checkbox" id="opt-citations" checked> follow citation graph</label>
+            <label class="tiny"><input type="checkbox" id="opt-fulltext" checked> attempt open-access full text</label>
+            <label class="tiny"><input type="checkbox" id="opt-llm" checked> allow LLM language refinement (optional, never a source of truth)</label>
+          </div>
+          <h3>Sources</h3>
+          <p class="tiny muted">Leave empty to use every adapter that matches the intent.</p>
+          <div class="chips" id="adapter-picker"></div>
+        </details>
+
+        <div class="card" id="plan-card" style="display:none">
+          <h3 style="margin-top:0">Interpretation and plan</h3>
+          <div id="plan-body"></div>
+        </div>
+      </section>
+
+      <!-- ---------------------------------------------------------------- -->
+      <section id="panel-run" class="panel">
+        <h2>Run &amp; timeline</h2>
+        <p class="sub">Live progress of the active job, and the audit trail of the latest completed run.</p>
+        <div class="card">
+          <div class="row tight">
+            <span id="job-status" class="badge grey">idle</span>
+            <span class="spacer"></span>
+            <button class="btn danger small" id="btn-cancel" type="button" disabled>Cancel job</button>
+          </div>
+          <div class="progress"><div id="job-bar" style="width:0%"></div></div>
+          <p class="small muted" id="job-message">No job running.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">Coverage &amp; sufficiency of the latest run</h3>
+          <div id="run-summary"><p class="muted small">No run yet.</p></div>
+        </div>
+      </section>
+
+      <!-- ---------------------------------------------------------------- -->
+      <section id="panel-sources" class="panel">
+        <h2>Sources &amp; queries</h2>
+        <p class="sub">Every source contacted, every query sent, and every record excluded, with the reason.</p>
+        <div class="card"><h3 style="margin-top:0">Per-source summary</h3><div id="ledger-sources"></div></div>
+        <div class="card"><h3 style="margin-top:0">Search ledger (per page)</h3><div id="ledger-entries"></div></div>
+      </section>
+
+      <!-- ---------------------------------------------------------------- -->
+      <section id="panel-datasets" class="panel">
+        <h2>Dataset discovery</h2>
+        <p class="sub">Only values actually published by the source are shown. "not published" means the source did not state it and it was not inferred.</p>
+        <div class="card">
+          <div class="row">
+            <div><label for="f-q">Text contains</label><input type="text" id="f-q" placeholder="title / abstract"></div>
+            <div><label for="f-modality">Modality</label><input type="text" id="f-modality" placeholder="tabular, image, text…"></div>
+            <div><label for="f-access">Access</label>
+              <select id="f-access"><option value="">any</option><option value="open">open</option><option value="restricted">restricted</option><option value="unknown">unknown</option></select>
+            </div>
+            <div><label for="f-license">Licence contains</label><input type="text" id="f-license" placeholder="cc-by, mit…"></div>
+            <div><label for="f-minyear">Year from</label><input type="number" id="f-minyear" placeholder="2015"></div>
+            <div><label for="f-maxyear">Year to</label><input type="number" id="f-maxyear" placeholder="2026"></div>
+            <div><label for="f-state">Stage</label>
+              <select id="f-state">
+                <option value="">any</option>
+                <option value="discovered">discovered</option>
+                <option value="metadata_verified">metadata verified</option>
+                <option value="download_verified">download verified</option>
+                <option value="contents_inspected">contents inspected</option>
+                <option value="compatibility_assessed">compatibility assessed</option>
+                <option value="approved">approved</option>
+              </select>
+            </div>
+            <div><label for="f-rel">Min relevance</label><input type="number" id="f-rel" min="0" max="1" step="0.05" placeholder="0"></div>
+            <div style="align-self:flex-end"><button class="btn" id="btn-filter" type="button">Apply filters</button></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row tight">
+            <span class="small muted" id="ds-count">no project loaded</span>
+            <span class="spacer"></span>
+            <span class="small muted">Selected: <span id="ds-selected-count">0</span></span>
+            <button class="btn small" id="btn-compat" type="button">Assess compatibility of selection</button>
+            <button class="btn small ghost" id="btn-clear-sel" type="button">Clear selection</button>
+          </div>
+        </div>
+        <div id="ds-list"></div>
+      </section>
+
+      <!-- ---------------------------------------------------------------- -->
+      <section id="panel-literature" class="panel">
+        <h2>Literature</h2>
+        <p class="sub">Papers and reports retrieved, with their verification checks and the evidence extracted from them.</p>
+        <div class="card">
+          <div class="row">
+            <div><label for="lit-q">Text contains</label><input type="text" id="lit-q" placeholder="title / abstract"></div>
+            <div><label for="lit-ver">Verification</label>
+              <select id="lit-ver">
+                <option value="">any</option>
+                <option value="verified">verified</option>
+                <option value="partially_verified">partially verified</option>
+                <option value="conflict">conflict</option>
+                <option value="inconclusive">inconclusive</option>
+                <option value="inaccessible">inaccessible</option>
+                <option value="failed">failed</option>
+                <option value="unverified">unverified</option>
+              </select>
+            </div>
+            <div><label for="lit-minyear">Year from</label><input type="number" id="lit-minyear" placeholder="2015"></div>
+            <div><label for="lit-rel">Min relevance</label><input type="number" id="lit-rel" min="0" max="1" step="0.05" placeholder="0"></div>
+            <div style="align-self:flex-end"><button class="btn" id="btn-lit-filter" type="button">Apply filters</button></div>
+          </div>
+        </div>
+        <div id="lit-list"></div>
+      </section>
+
+      <!-- ---------------------------------------------------------------- -->
+      <section id="panel-matrix" class="panel">
+        <h2>Literature evidence matrix</h2>
+        <p class="sub">Each field is quoted from retrieved text with its locator. Fields that were not found are reported as "not reported in the retrieved text" rather than inferred.</p>
+        <div class="card"><button class="btn" id="btn-matrix" type="button">Build matrix from stored records</button></div>
+        <div class="table-wrap" id="matrix-table"></div>
+      </section>
+
+      <!-- ---------------------------------------------------------------- -->
+      <section id="panel-gaps" class="panel">
+        <h2>Gap explorer</h2>
+        <p class="sub">Gaps are only reported when retrieved text supports them. Counter-evidence found in the same search is shown alongside every candidate.</p>
+        <div class="card">
+          <div class="row tight">
+            <button class="btn" id="btn-gaps" type="button">Discover gaps from stored records</button>
+            <span class="spacer"></span>
+            <span class="small muted" id="gap-status"></span>
+          </div>
+        </div>
+        <div id="gap-list"></div>
+      </section>
+
+      <!-- ---------------------------------------------------------------- -->
+      <section id="panel-manuscript" class="panel">
+        <h2>Manuscript workspace</h2>
+        <p class="sub">Twelve guided sections. Each carries a status: supported by retrieved evidence, needs your input, needs more research, or cannot be completed yet. Results are never fabricated.</p>
+        <div class="card">
+          <div class="row tight">
+            <button class="btn" id="btn-manuscript" type="button">Assemble manuscript</button>
+            <span class="spacer"></span>
+            <button class="btn ghost small" data-export="docx">Export DOCX</button>
+            <button class="btn ghost small" data-export="md">Export Markdown</button>
+            <button class="btn ghost small" data-export="tex">Export LaTeX</button>
+            <button class="btn ghost small" data-export="json">Export JSON</button>
+          </div>
+        </div>
+        <div class="card"><h3 style="margin-top:0">Readiness checklist</h3><div id="checklist"></div></div>
+        <div id="manuscript-sections"></div>
+      </section>
+
+      <!-- ---------------------------------------------------------------- -->
+      <section id="panel-downloads" class="panel">
+        <h2>Downloads &amp; collection</h2>
+        <p class="sub">Downloads are validated (size, SHA-256, archive integrity) and recorded with provenance. Access controls and licences are never bypassed.</p>
+        <div class="card">
+          <div class="row tight">
+            <span class="small muted" id="dl-stats"></span>
+            <span class="spacer"></span>
+            <button class="btn ghost small" id="btn-manifest" type="button">View manifest</button>
+            <button class="btn ghost small" id="btn-manifest-dl" type="button">Download manifest JSON</button>
+            <button class="btn danger small" id="btn-purge" type="button">Remove partial files</button>
+          </div>
+        </div>
+        <div id="dl-list"></div>
+      </section>
+
+      <!-- ---------------------------------------------------------------- -->
+      <section id="panel-projects" class="panel">
+        <h2>Project history &amp; reproducibility</h2>
+        <p class="sub">Every project keeps its question, interpretation, search ledger, records, evidence and reports.</p>
+        <div id="projects-list"></div>
+      </section>
+
+      <!-- ---------------------------------------------------------------- -->
+      <section id="panel-policy" class="panel">
+        <h2>Policy &amp; evidence rules</h2>
+        <div class="card"><div id="policy-body"></div></div>
+      </section>
+
+      <!-- ---------------------------------------------------------------- -->
+      <section id="panel-ops" class="panel">
+        <h2>Adapters &amp; logs</h2>
+        <div class="card"><h3 style="margin-top:0">Source adapters</h3><div id="adapter-table"></div></div>
+        <div class="card">
+          <h3 style="margin-top:0">Recent structured logs</h3>
+          <div class="row tight" style="margin-bottom:8px">
+            <button class="btn ghost small" id="btn-logs" type="button">Refresh logs</button>
+            <label class="tiny" style="align-self:center"><input type="checkbox" id="logs-autoscroll" checked> auto-scroll</label>
+          </div>
+          <pre class="log" id="log-view">Press refresh to load recent log events.</pre>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="modal">
+  <div class="modal">
+    <button class="btn ghost small close" id="modal-close" type="button">Close</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

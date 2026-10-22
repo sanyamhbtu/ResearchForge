@@ -1,0 +1,363 @@
+{
+  "suite_version": "1.0",
+  "reviewer": "ResearchForge project author (manual relevance judgement, one reviewer)",
+  "reviewed_on": "2026-10-22",
+  "review_basis": "Each case states a research question, the set of records a human judged relevant, the counterexamples that must not satisfy the request, and the expected evidence-sufficiency outcome. HTTP fixtures are synthetic payloads written in the documented response shape of each source API; they are NOT live API responses and no metric in this suite describes the live internet.",
+  "cases": [
+    {
+      "id": "skin-lesion-image-datasets",
+      "question": "Find publicly available image datasets of skin lesions for diagnosis",
+      "intent": "datasets",
+      "adapters": ["huggingface", "zenodo"],
+      "depth": 1,
+      "page_size": 10,
+      "verify_limit": 10,
+      "ground_truth": {
+        "relevant": [
+          {
+            "identifier": "huggingface:user/skin-lesion-dermoscopy",
+            "doi": "",
+            "title": "Dermoscopy Skin Lesion Images (DSLI mini)",
+            "year": 2023,
+            "license": "cc-by-4.0",
+            "access": "open",
+            "modality": "image",
+            "required": true
+          },
+          {
+            "identifier": "zenodo:7654321",
+            "doi": "10.5281/zenodo.7654321",
+            "title": "Dermoscopic Skin Lesion Image Dataset (DSLI-2023)",
+            "year": 2023,
+            "license": "CC-BY-4.0",
+            "access": "open",
+            "modality": "",
+            "required": true
+          }
+        ],
+        "counterexamples": [
+          {
+            "identifier": "huggingface:user/imdb-movie-reviews",
+            "disposition": "excluded",
+            "reason": "a text sentiment corpus; it must be filtered out by the requested image modality, not merely ranked low"
+          }
+        ],
+        "expected_duplicate_pairs": []
+      },
+      "expect": {
+        "sufficiency_status": "sufficient",
+        "exact_message": null,
+        "min_precision": 1.0,
+        "min_recall": 1.0,
+        "max_records": null
+      },
+      "fixtures": {
+        "GET huggingface.co/api/datasets": {
+          "status": 200,
+          "json": [
+            {
+              "id": "user/skin-lesion-dermoscopy",
+              "author": "user",
+              "sha": "a1b2c3d4",
+              "lastModified": "2023-05-02T10:00:00.000Z",
+              "description": "Dermoscopic images of skin lesions with diagnosis labels for classification research.",
+              "downloads": 48120,
+              "likes": 311,
+              "gated": false,
+              "tags": ["modality:image", "task_categories:image-classification", "license:cc-by-4.0"],
+              "cardData": {
+                "pretty_name": "Dermoscopy Skin Lesion Images (DSLI mini)",
+                "license": "cc-by-4.0",
+                "task_categories": ["image-classification"],
+                "size_categories": ["10K<n<100K"],
+                "language": ["en"]
+              },
+              "siblings": [
+                {"rfilename": ".gitattributes"},
+                {"rfilename": "data/train-00000-of-00001.parquet"},
+                {"rfilename": "README.md"}
+              ]
+            },
+            {
+              "id": "user/imdb-movie-reviews",
+              "author": "user",
+              "sha": "ffff0000",
+              "lastModified": "2021-08-19T08:30:00.000Z",
+              "description": "Fifty thousand movie review documents labelled by sentiment polarity.",
+              "downloads": 990213,
+              "likes": 5400,
+              "gated": false,
+              "tags": ["modality:text", "task_categories:text-classification", "license:cc0-1.0"],
+              "cardData": {
+                "pretty_name": "IMDB Movie Review Corpus",
+                "license": "cc0-1.0",
+                "task_categories": ["text-classification"],
+                "language": ["en"]
+              },
+              "siblings": [{"rfilename": "data/train.csv"}]
+            }
+          ]
+        },
+        "GET zenodo.org/api/records": {
+          "status": 200,
+          "json": {
+            "hits": {
+              "total": 1,
+              "hits": [
+                {
+                  "id": 7654321,
+                  "doi": "10.5281/zenodo.7654321",
+                  "access_right": "open",
+                  "metadata": {
+                    "title": "Dermoscopic Skin Lesion Image Dataset (DSLI-2023)",
+                    "description": "<p>A curated collection of dermoscopic images of skin lesions collected across three dermatology clinics, with histopathology-confirmed diagnosis labels.</p>",
+                    "resource_type": {"type": "dataset"},
+                    "license": {"id": "CC-BY-4.0"},
+                    "creators": [{"name": "M. Rossi"}, {"name": "K. Tanaka"}],
+                    "publication_date": "2023-04-11",
+                    "version": "1.2",
+                    "keywords": ["skin lesion", "dermoscopy", "image classification"],
+                    "related_identifiers": [
+                      {"identifier": "10.1145/3357384.3357900", "relation": "isDocumentedBy"}
+                    ]
+                  },
+                  "files": [
+                    {
+                      "key": "dsli-2023.zip",
+                      "size": 104857600,
+                      "checksum": "md5:9f2b1c0d5e6f7a8b9c0d1e2f3a4b5c6d",
+                      "links": {"self": "https://zenodo.org/api/records/7654321/files/dsli-2023.zip/content"}
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "GET api.datacite.org/dois/10.5281/zenodo.7654321": {
+          "status": 200,
+          "json": {
+            "data": {
+              "attributes": {
+                "doi": "10.5281/zenodo.7654321",
+                "titles": [{"title": "Dermoscopic Skin Lesion Image Dataset (DSLI-2023)"}],
+                "publisher": "Zenodo",
+                "publicationYear": 2023,
+                "rightsList": [{"rightsIdentifier": "CC-BY-4.0"}]
+              }
+            }
+          }
+        },
+        "HEAD huggingface.co/datasets/user/skin-lesion-dermoscopy": {"status": 200},
+        "HEAD huggingface.co/datasets/user/skin-lesion-dermoscopy/resolve/a1b2c3d4/data/train-00000-of-00001.parquet": {"status": 200},
+        "HEAD huggingface.co/datasets/user/imdb-movie-reviews": {"status": 200},
+        "HEAD zenodo.org/records/7654321": {"status": 200},
+        "HEAD zenodo.org/api/records/7654321/files/dsli-2023.zip/content": {"status": 200}
+      }
+    },
+    {
+      "id": "fraud-detection-gnn-literature",
+      "question": "Find research on detecting fraudulent financial transactions with graph neural networks",
+      "intent": "literature",
+      "adapters": ["openalex", "crossref"],
+      "depth": 1,
+      "page_size": 10,
+      "verify_limit": 10,
+      "ground_truth": {
+        "relevant": [
+          {
+            "identifier": "openalex:W2741809807",
+            "doi": "10.1145/3357384.3357900",
+            "title": "Fraud Detection in Financial Transaction Graphs with Graph Neural Networks",
+            "year": 2019,
+            "license": "CC-BY-4.0",
+            "access": "open",
+            "modality": "",
+            "required": true
+          },
+          {
+            "identifier": "openalex:W2999999999",
+            "doi": "10.1016/j.dss.2020.113400",
+            "title": "Relational Graph Learning for Fraudulent Transaction Detection in Banking Networks",
+            "year": 2020,
+            "license": "CC-BY-NC-4.0",
+            "access": "open",
+            "modality": "",
+            "required": true
+          }
+        ],
+        "counterexamples": [
+          {
+            "identifier": "openalex:W9999999999",
+            "disposition": "reported",
+            "reason": "topically adjacent (shares the phrase graph neural networks) but not about fraud; the pipeline is expected to keep it and rank it below the relevant records, which lowers measured precision and is reported as such"
+          }
+        ],
+        "expected_duplicate_pairs": [
+          ["openalex:W2741809807", "crossref:10.1145/3357384.3357900"]
+        ]
+      },
+      "expect": {
+        "sufficiency_status": "sufficient",
+        "exact_message": null,
+        "min_precision": 0.6,
+        "min_recall": 1.0,
+        "max_records": null
+      },
+      "fixtures": {
+        "GET api.openalex.org/works": {
+          "status": 200,
+          "json": {
+            "meta": {"count": 3},
+            "results": [
+              {
+                "id": "https://openalex.org/W2741809807",
+                "doi": "https://doi.org/10.1145/3357384.3357900",
+                "display_name": "Fraud Detection in Financial Transaction Graphs with Graph Neural Networks",
+                "type": "article",
+                "publication_year": 2019,
+                "publication_date": "2019-11-07",
+                "cited_by_count": 412,
+                "open_access": {"is_oa": true, "oa_status": "gold"},
+                "best_oa_location": {"license": "cc-by", "pdf_url": "https://example.org/paper-a.pdf"},
+                "primary_location": {"source": {"display_name": "Proceedings of the 28th ACM CIKM"}},
+                "authorships": [{"author": {"display_name": "L. Zhang"}}],
+                "abstract_inverted_index": {
+                  "We": [0], "study": [1], "fraud": [2], "detection": [3], "in": [4],
+                  "financial": [5], "transaction": [6], "graphs": [7], "with": [8],
+                  "graph": [9], "neural": [10], "networks": [11]
+                },
+                "topics": [{"display_name": "Graph Neural Networks"}, {"display_name": "Fraud Detection"}],
+                "referenced_works": [],
+                "updated_date": "2024-01-05T00:00:00"
+              },
+              {
+                "id": "https://openalex.org/W2999999999",
+                "doi": "https://doi.org/10.1016/j.dss.2020.113400",
+                "display_name": "Relational Graph Learning for Fraudulent Transaction Detection in Banking Networks",
+                "type": "article",
+                "publication_year": 2020,
+                "publication_date": "2020-06-01",
+                "cited_by_count": 137,
+                "open_access": {"is_oa": true, "oa_status": "hybrid"},
+                "best_oa_location": {"license": "cc-by-nc", "pdf_url": "https://example.org/paper-b.pdf"},
+                "primary_location": {"source": {"display_name": "Decision Support Systems"}},
+                "authorships": [{"author": {"display_name": "R. Okafor"}}],
+                "abstract_inverted_index": {
+                  "Relational": [0], "learning": [1], "improves": [2], "fraudulent": [3],
+                  "transaction": [4], "detection": [5], "in": [6], "banking": [7], "networks": [8]
+                },
+                "topics": [{"display_name": "Financial Fraud Detection"}],
+                "referenced_works": [],
+                "updated_date": "2023-09-14T00:00:00"
+              },
+              {
+                "id": "https://openalex.org/W9999999999",
+                "doi": "https://doi.org/10.1000/med.2020.1",
+                "display_name": "Graph Neural Networks for Tumour Segmentation in Magnetic Resonance Imaging",
+                "type": "article",
+                "publication_year": 2020,
+                "publication_date": "2020-02-15",
+                "cited_by_count": 890,
+                "open_access": {"is_oa": true, "oa_status": "gold"},
+                "best_oa_location": {"license": "cc-by", "pdf_url": ""},
+                "primary_location": {"source": {"display_name": "Medical Image Analysis"}},
+                "authorships": [{"author": {"display_name": "P. Novak"}}],
+                "abstract_inverted_index": {
+                  "We": [0], "segment": [1], "tumours": [2], "in": [3], "magnetic": [4],
+                  "resonance": [5], "images": [6], "with": [7], "graph": [8], "neural": [9], "networks": [10]
+                },
+                "topics": [{"display_name": "Medical Image Segmentation"}],
+                "referenced_works": [],
+                "updated_date": "2024-03-01T00:00:00"
+              }
+            ]
+          }
+        },
+        "GET api.crossref.org/works": {
+          "status": 200,
+          "json": {
+            "message": {
+              "total-results": 1,
+              "items": [
+                {
+                  "DOI": "10.1145/3357384.3357900",
+                  "title": ["Fraud Detection in Financial Transaction Graphs with Graph Neural Networks"],
+                  "URL": "https://doi.org/10.1145/3357384.3357900",
+                  "container-title": ["Proceedings of the 28th ACM CIKM"],
+                  "publisher": "ACM",
+                  "issued": {"date-parts": [[2019, 11, 7]]},
+                  "author": [{"given": "L.", "family": "Zhang"}, {"given": "S.", "family": "Mehta"}],
+                  "is-referenced-by-count": 412,
+                  "license": [{"URL": "https://creativecommons.org/licenses/by/4.0/"}],
+                  "subject": ["Graph Neural Networks"],
+                  "type": "proceedings-article",
+                  "abstract": "<jats:p>Graph neural networks are applied to a large financial transaction graph to detect fraud. The proposed relational model propagates information across accounts and merchant edges, and it outperforms gradient-boosted baselines on a real banking network.</jats:p>",
+                  "reference": [{"DOI": "10.1016/j.dss.2020.113400"}],
+                  "indexed": {"date-time": "2024-01-06T00:00:00Z"},
+                  "created": {"date-time": "2019-10-01T00:00:00Z"}
+                }
+              ]
+            }
+          }
+        },
+        "GET api.crossref.org/works/10.1145/3357384.3357900": {
+          "status": 200,
+          "json": {
+            "message": {
+              "DOI": "10.1145/3357384.3357900",
+              "title": ["Fraud Detection in Financial Transaction Graphs with Graph Neural Networks"],
+              "publisher": "ACM",
+              "license": [{"URL": "https://creativecommons.org/licenses/by/4.0/"}],
+              "issued": {"date-parts": [[2019]]},
+              "type": "proceedings-article"
+            }
+          }
+        },
+        "GET api.crossref.org/works/10.1016/j.dss.2020.113400": {
+          "status": 200,
+          "json": {
+            "message": {
+              "DOI": "10.1016/j.dss.2020.113400",
+              "title": ["Relational Graph Learning for Fraudulent Transaction Detection in Banking Networks"],
+              "publisher": "Elsevier BV",
+              "license": [{"URL": "https://creativecommons.org/licenses/by-nc/4.0/"}],
+              "issued": {"date-parts": [[2020]]},
+              "type": "journal-article"
+            }
+          }
+        },
+        "GET api.datacite.org/dois/10.1145/3357384.3357900": {"status": 404},
+        "GET api.datacite.org/dois/10.1016/j.dss.2020.113400": {"status": 404},
+        "HEAD doi.org/10.1145/3357384.3357900": {"status": 200},
+        "HEAD doi.org/10.1016/j.dss.2020.113400": {"status": 200},
+        "HEAD doi.org/10.1000/med.2020.1": {"status": 404}
+      }
+    },
+    {
+      "id": "no-dataset-worldwide",
+      "question": "Find a public dataset of confirmed crop yield measurements recorded on Mars colonies",
+      "intent": "datasets",
+      "adapters": ["huggingface", "zenodo"],
+      "depth": 1,
+      "page_size": 10,
+      "verify_limit": 10,
+      "ground_truth": {
+        "relevant": [],
+        "counterexamples": [],
+        "expected_duplicate_pairs": []
+      },
+      "expect": {
+        "sufficiency_status": "insufficient_evidence",
+        "exact_message": "There is insufficient data worldwide. No dataset.",
+        "min_precision": null,
+        "min_recall": null,
+        "max_records": 0
+      },
+      "fixtures": {
+        "GET huggingface.co/api/datasets": {"status": 200, "json": []},
+        "GET zenodo.org/api/records": {"status": 200, "json": {"hits": {"total": 0, "hits": []}}}
+      }
+    }
+  ]
+}
