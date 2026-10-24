@@ -170,14 +170,29 @@ def load_settings(dotenv: bool = True) -> Settings:
         configured_data_dir = str(default_data_dir)
 
     data_dir = _resolve(configured_data_dir, default_data_dir)
+    is_vercel = os.environ.get("VERCEL") == "1"
+
+    # Every deployed Vercel function runs from a read-only bundle. The only
+    # writable filesystem location is /tmp, so never honor local filesystem
+    # paths from project environment variables for runtime state.
+    if is_vercel:
+        data_dir = default_data_dir
+        db_path = data_dir / "researchforge.db"
+        cache_dir = data_dir / "http_cache"
+        download_dir = data_dir / "downloads"
+    else:
+        db_path = _resolve(_env("RF_DB_PATH"), data_dir / "researchforge.db")
+        cache_dir = _resolve(_env("RF_CACHE_DIR"), data_dir / "http_cache")
+        download_dir = _resolve(_env("RF_DOWNLOAD_DIR"), data_dir / "downloads")
+
     settings = Settings(
         host=_env("RF_HOST", "127.0.0.1"),
         port=_env_int("RF_PORT", 8000),
         open_browser=_env_bool("RF_OPEN_BROWSER", True),
         data_dir=data_dir,
-        db_path=_resolve(_env("RF_DB_PATH"), data_dir / "researchforge.db"),
-        cache_dir=_resolve(_env("RF_CACHE_DIR"), data_dir / "http_cache"),
-        download_dir=_resolve(_env("RF_DOWNLOAD_DIR"), data_dir / "downloads"),
+        db_path=db_path,
+        cache_dir=cache_dir,
+        download_dir=download_dir,
         http_timeout=_env_float("RF_HTTP_TIMEOUT", 25.0),
         http_max_retries=_env_int("RF_HTTP_MAX_RETRIES", 3),
         http_backoff_base=_env_float("RF_HTTP_BACKOFF_BASE", 0.8),
