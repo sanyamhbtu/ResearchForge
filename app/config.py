@@ -147,11 +147,29 @@ def _resolve(value: str, default: Path) -> Path:
     return candidate
 
 
+def _default_data_dir() -> Path:
+    """Return a writable runtime directory for local and serverless execution."""
+    if os.environ.get("VERCEL") == "1":
+        return Path("/tmp/researchforge")
+    return PROJECT_ROOT / "data"
+
+
 def load_settings(dotenv: bool = True) -> Settings:
     if dotenv:
         _load_dotenv(PROJECT_ROOT / ".env")
 
-    data_dir = _resolve(_env("RF_DATA_DIR"), PROJECT_ROOT / "data")
+    default_data_dir = _default_data_dir()
+    configured_data_dir = _env("RF_DATA_DIR")
+    # Vercel's deployed bundle is read-only. Ignore project-relative or
+    # /var/task paths there, including values copied from local env files.
+    if os.environ.get("VERCEL") == "1" and (
+        not configured_data_dir
+        or configured_data_dir.startswith("/var/task")
+        or not Path(configured_data_dir).is_absolute()
+    ):
+        configured_data_dir = str(default_data_dir)
+
+    data_dir = _resolve(configured_data_dir, default_data_dir)
     settings = Settings(
         host=_env("RF_HOST", "127.0.0.1"),
         port=_env_int("RF_PORT", 8000),
