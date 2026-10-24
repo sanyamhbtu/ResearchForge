@@ -126,10 +126,8 @@ wobbly ink borders, hard offset shadows, washi tape on the modal, wavy underline
 per-panel pop-in. The three webfonts (Shantell Sans, Caveat, Nunito) load from Google
 Fonts; if the network is unavailable the stylesheet falls back to Comic Sans MS /
 Segoe Print / Segoe UI, so the layout degrades rather than breaks. The landing page's
-four decorative illustrations are generated images fetched from an external
-text-to-image URL; each one is tagged `onerror="this.classList.add('broken')"` and
-`.art.broken { display: none }`, so an unreachable image disappears instead of showing a
-broken-image icon. No functional surface depends on those images.
+five decorative illustrations are generated locally (`app/static/img/land-*.jpg`) and
+served as static assets by the same FastAPI app — no external image requests are made.
 
 ### Frontend shell: landing page, workspace profile, dashboard, record profile
 
